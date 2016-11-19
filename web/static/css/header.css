@@ -1,0 +1,77 @@
+/*end основная разметка*/
+.polski-carousel {   
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 1rem 1.5rem;
+      margin-bottom: 10px;
+}
+.polski-carousel h3 {
+      font-size: 28;
+      color: #8e23e6;     
+}
+.polski-carousel p {   
+      color: #8e23e6;     
+}
+
+/*хедер*/
+img {
+    margin-bottom: 0px;
+    max-width: 100%;
+    height: auto;
+    vertical-align: top;
+    cursor: auto;
+    float:left; /* Выравнивание по левому краю */
+    margin: 0px 7px 7px 0; /* Отступы вокруг картинки */
+    z-index: 4;
+}
+
+#header-text {
+    float: none;
+    text-align: left;
+    padding: 0;
+    /*margin-bottom: 10px;*/
+        text-align: center;
+}
+/*h1#site-title {
+    padding-bottom: 5px;
+    margin-top: 2px;
+}*/
+#site-title a {
+    color: #8e23e6;
+        font-size: 36px;   
+         text-decoration: none;
+}
+#site-description {
+    color: #8e23e6;
+}
+@media screen and (max-width: 768px)
+#site-description {
+    padding-bottom: 5px;
+}
+#site-description {
+    line-height: 24px;
+    font-size: 16px;
+    padding-bottom: 0;
+    color: #666666;
+}
+p#site-description {
+    line-height: 24px;
+    margin-bottom: 10px;
+    font-family: 'Georgia', sans-serif;
+    font-size: 16px;
+}
+
+/*end-хедер*/
+
+/* Каруселька*/
+
+.item{
+    background: #333;    
+    text-align: center;
+    height: 240px !important;
+}
+.carousel{  
+    margin-top: 1px;
+    width: 100%;
+   /* margin-left: 10% ;*/
+}
+/*end Каруселька*/

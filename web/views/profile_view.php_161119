@@ -1,0 +1,217 @@
+     	<script type="text/javascript" src="lib/bootstrap-fileinput-master/js/fileinput.min.js"></script>
+	<link rel="stylesheet" href="lib/bootstrap-fileinput-master/css/fileinput.min.css" type="text/css" media="screen"/>
+	<script src="lib/bootstrap-fileinput-master/js/fileinput.js"></script>
+	<script src="lib/bootstrap-fileinput-master/js/locales/ru.js"></script>
+
+     <link href="/lib/photo-editor-gh-pages/css/font-awesome.min.css" rel="stylesheet">
+      <link href="/lib/photo-editor-gh-pages/css/cropper.min.css" rel="stylesheet">
+      <link href="/lib/photo-editor-gh-pages/css/main.css" rel="stylesheet">
+ 
+
+ 	<?
+		
+	var_dump($data) ;
+
+	if (isset($_COOKIE['usrUpdateMsg'])){
+		echo "<h2 class=\"warningMsg\">".$_COOKIE['usrUpdateMsg']."</h2>";
+	} 
+
+	//$deffFieldValue="Заполните это поле";
+	//$userInfo=unserialize($_SESSION["userInfo"]);
+	?>
+		<h1> Личный кабинет. </h1>
+	<h3> Добро пожаловать, <? echo $data["login"]?> </h3>
+
+	<form id="editUser" class="user"  method="POST" action="/user/edit"  enctype="multipart/form-data" >
+	
+
+
+<table width="100%">
+  <tr>
+    <td  width="50%">
+					<table  width="100%" >
+						<tr>
+							<td  width="20%">
+								<label for="text" class="control-label">Логин</label>
+							</td>
+							<td width="80%">
+								<div class="form-group">
+									<input type="text" class="form-control" name="login" id="login" value=<?echo "".$data["login"]."";?>>
+								</div>
+							</td>
+						</tr>	
+
+						<tr>
+							<td  width="20%">
+								<label for="text" class="control-label">Email</label>
+							</td>
+							<td width="80%">
+								<div class="form-group">
+									<input type="text" class="form-control" name="email" id="email" value=<?echo "".$data["email"]."";?>>
+								</div>
+							</td>
+						</tr>	
+						<tr>
+							<td  width="20%">
+								<label for="text" class="control-label">Имя</label>
+							</td>
+							<td width="80%">
+								<div class="form-group">
+									<input type="text" class="form-control"  name="first_name"  id="first_name" value=<?echo "".$data["first_name"]."";?>>
+								</div>
+							</td>
+						</tr>	
+
+						<tr>
+							<td  width="20%">
+								<label for="text" class="control-label">Фамилия</label>
+							</td>
+							<td width="80%">
+								<div class="form-group">
+									<input type="text" class="form-control" name="last_name" id="last_name"    value=<?echo "".$data["last_name"]."";?>>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td  width="20%">
+							</td>
+							<td width="80%">
+								
+								<div class="btn_btn-primary_my">
+									<button type="submit" class="btn btn-primary" name="edit" id="edit">Сохранить изменения</button>
+									<div>									
+									</td>
+									<tr>
+										<td  width="20%">
+										</td>
+										<td width="80%">
+											<!-- <form id="dropUser" method="POST" action="/user/drop"  enctype="multipart/form-data" > -->
+											<div class="btn_btn-primary_my">
+												<button type="submit" class="btn btn-primary" name="drop" id="drop" >Удалить аккаунт</button>
+												<div>
+
+												</td>
+
+											</table>
+    </td>
+     <td  width="50%">
+      <header class="header">
+         <span class="title">Изменить аватар</span>
+         <button-box>
+         </button-box>
+      </header>
+      <main class="main">
+         <upload-box>
+         </upload-box>
+         <canvas-box>	</canvas-box>
+      </main>
+      <script id="button-box" type="text/x-template">
+         <div @click="click" class="menu">
+         <label for="file" title="Upload" v-show="!uploaded" class="menu__button">
+         <span class="fa fa-upload"></span>
+         </label>
+         <button data-action="restore" title="Undo (Ctrl + Z)" v-show="cropped" class="menu__button">
+         <span class="fa fa-undo"></span>
+         </button>
+         <button data-action="remove" title="Delete (Delete)" v-show="uploaded &amp;&amp; !cropping" class="menu__button menu__button--danger">
+         <span class="fa fa-trash"></span>
+         </button>
+         <button data-action="clear" title="Cancel (Esc)" v-show="cropping" class="menu__button menu__button--danger"><span class="fa fa-ban"></span>
+         </button>
+         <button data-action="crop" title="OK (Enter)" v-show="cropping" class="menu__button menu__button--success"><span class="fa fa-check"></span>
+         </button>
+         <a data-action="download" href="{{ url }}" title="Download" download="{{ name }}" v-show="url" class="menu__button menu__button--success">
+         <span class="fa fa-download"></span>
+         </a>
+<!--          <a data-action="download" href="https://github.com/fengyuanchen/photo-editor" title="View on GitHub" class="menu__button">
+         <span class="fa fa-github"></span>
+         </a> -->
+         </div>
+      </script>
+      <script id="upload-box" type="text/x-template">
+         <div @change="change" @dragover="dragover" @drop="drop" v-show="!uploaded" class="upload">
+         <p>Drop image here or
+         <label class="browse">browse...
+         <input id="file" type="file" accept="image/*" class="sr-only">
+         </label>
+         </p></div>
+      </script>
+      <script id="canvas-box" type="text/x-template">
+         <div v-show="editable" class="canvas">
+         <div @dblclick="dblclick" class="editor">
+         <template v-if="url"><img src="{{ url }}" alt="{{ name }}" @load="load"></template>
+         </div><div @click="click" v-show="cropper" class="toolbar">
+         <button data-action="move" title="Move (M)" class="toolbar__button">
+         <span class="fa fa-arrows"></span>
+         </button><button data-action="crop" title="Crop (C)" class="toolbar__button">
+         <span class="fa fa-crop"></span></button>
+         <button data-action="zoom-in" title="Zoom In (I)" class="toolbar__button"><span class="fa fa-search-plus"></span></button>
+         <button data-action="zoom-out" title="Zoom Out (O)" class="toolbar__button"><span class="fa fa-search-minus"></span></button>
+         <button data-action="rotate-left" title="Rotate Left (L)" class="toolbar__button"><span class="fa fa-rotate-left"></span></button>
+         <button data-action="rotate-right" title="Rotate Right (R)" class="toolbar__button"><span class="fa fa-rotate-right"></span></button>
+         <button data-action="flip-horizontal" title="Flip Horizontal (H)" class="toolbar__button"><span class="fa fa-arrows-h"></span></button>
+         <button data-action="flip-vertical" title="Flip Vertical (V)" class="toolbar__button"><span class="fa fa-arrows-v"></span></button>
+         </div>
+         </div>
+      </script>
+      <script src="/lib/photo-editor-gh-pages/js/vue.min.js"></script>
+      <script src="/lib/photo-editor-gh-pages/js/cropper.min.js"></script>
+      <script src="/lib/photo-editor-gh-pages/js/main.js"></script>
+     </td>
+  </tr>
+</table>
+			<input type="hidden"  name="real_email" id="real_email"    value=<?echo "".$data["email"]."";?>>
+
+		</form>
+
+
+
+	<script type="text/javascript">
+
+			/*Валидация формы*/
+			$(document).ready(function() {
+				$('#proc_autorize').bootstrapValidator({
+					framework: 'bootstrap',
+					icon: {
+						valid: 'glyphicon glyphicon-ok',
+						invalid: 'glyphicon glyphicon-remove',
+						validating: 'glyphicon glyphicon-refresh'
+					},
+					fields: {
+						login: {
+							validators: {
+								notEmpty: {
+									message: 'Поле должно быть задано'
+								},
+								stringLength: {
+									min: 3,
+									max: 127,
+									message: 'Поле должно быть больше 2 символов'
+								},
+								regexp: {
+									regexp: /^[\w]{3,127}$/,
+									message: 'Поле должно содержать буквы, цифры, точку и подчеркивание'
+								}
+							}
+						},
+						email: {
+							validators: {
+								notEmpty: {
+									message: 'Поле должно быть задано'
+								},
+								stringLength: {
+									min: 2,
+									max: 500,
+									message: 'Поле должно быть больше 2 символов'
+								},
+								regexp: {
+									regexp: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+									message: 'Поле должно содержать буквы, цифры, точку и подчеркивание'
+								}
+							}
+						}
+					}
+				});
+			});
+
+		</script>
