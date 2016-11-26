@@ -23,17 +23,11 @@ class Route
 		// $routes=$url_routing->getRealURLByAlias($trimmedAlias);
 		// $routes = explode('/', $routes);			
 		$routes = explode('?', $_SERVER['REQUEST_URI'])[0];
-
 		$routes = explode('/', $routes);
-	
 		$url = explode(".", $routes[1]);
 		if ($config["prefix"] === $url[1]) {
-	
 			$realRoute = $db->makeQuery4Route("SELECT real_url FROM url_route WHERE alias='".$url[0]."';", "real_url");
-	
 		}
-	
-
 		if ($realRoute) {
 			$routes = explode('?', $realRoute)[0];
 			$routes = explode('/', $routes);

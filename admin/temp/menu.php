@@ -9,9 +9,18 @@
 				"location" => "",
 				"img" => "img/map/home.jpeg"
 				],
+				[
+				"name" => "categories",
+				"url" => "administrator/categories",
+				"ru_name" => "Категории",
+				"small_name" => "редактирование",
+				"logo"  => "edit",
+				"location" => "categories",
+				"img" => "img/map/edit.jpeg"
+				],
 								[
 				"name" => "goods",
-				"url" => "goods",
+				"url" => "administrator/goods",
 				"ru_name" => "Товары",
 				"small_name" => "редактирование",
 				"logo"  => "edit",
@@ -20,7 +29,7 @@
 				],
 								[
 				"name" => "vocabulary",
-				"url" => "users",
+				"url" => "administrator/users",
 				"ru_name" => "Пользователи",
 				"small_name" => "редактирование",
 				"logo"  => "user",

@@ -1,3 +1,56 @@
+<?
+if ($categories["errStatus"]) {
+	echo "<br> ".$categories["errText"];
+} else {
+	// var_dump($categories["data"])
+?> 
+<link rel="stylesheet" href="/web/static/css/all_A.css" type="text/css" media="screen"/>
+<ul id="accordion" class="accordion">
+	<?foreach ($categories["data"] as $catkey => $catvalue) {?>
+		<?if (is_null($catvalue["parentid"])) {?>
+			<li>
+			<div class="link">
+			<?
+			$fistSubMenuFlag=true;
+			$isHasSubMenu=false;
+			foreach ($categories["data"] as $subcatkey => $subcatvalue) {
+				if ($subcatvalue["parentid"]==$catvalue["id"]) {
+					$isHasSubMenu=true;
+					if ($fistSubMenuFlag) {?>
+							<a href=<?echo "\"".$catvalue["name"]."\"";?> class="left_menu_a_href">
+								<i class=<? echo "\"fa fa-".$catvalue["logo"]."\"";?>></i><?echo $catvalue["title"];?>
+							</a>	
+							<i class="fa fa-chevron-down"></i>
+							
+							<ul class="submenu">
+							<?$fistSubMenuFlag=false;
+					}?>
+					<li>						
+						 <i class=<? echo "\"fa fa-".$subcatvalue["logo"]."\"";?>></i>
+						 <a href=<?echo "\"".$subcatvalue["name"]."\"";?>>
+						 	<?echo $subcatvalue["title"];?>						 	
+						 </a>						  
+					</li>
+				<?}
+			}
+			if ($isHasSubMenu) {
+				echo "</ul>";
+			} else {?>
+				<a href=<?echo "\"".$catvalue["name"]."\"";?> class="left_menu_a_href">
+					<i class=<? echo "\"fa fa-".$catvalue["logo"]."\"";?>></i><?echo $catvalue["title"];?></i>
+				</a>
+			<?}?>
+
+			</div>
+			</li>
+		<?}?>			
+
+	<?}?>
+</ul>
+<?}?>
+
+<?require_once 'web/temp/menu.php';?>
+
 <ul id="accordion" class="accordion">
 	<?for ($i=0; $i <=count($menu)-1 ; $i++) {?>
 		<li>

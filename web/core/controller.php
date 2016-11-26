@@ -7,12 +7,17 @@ class Controller {
 	public $view;
 	public $db;
 	public $config;
+	public $menu;
 
 	function __construct()
 	{
 		global $config;
-		$this->view = new View();
+
+		$menu=$this->model->get_menu();	
+
+		$this->view = new View($menu);
 		$this->config=$config;
+
 	}
 	
 	// действие (action), вызываемое по умолчанию

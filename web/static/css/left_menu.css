@@ -9,20 +9,26 @@ background: #FFF;
 -moz-border-radius: 4px;
 border-radius: 4px;
 }
+.accordion ul {
+   padding: 0; /* Убираем поля */
+    margin-left: 2px; /* Отступ слева */
 
+}
 
 .left_menu_a_href{
-  color: #595959;
+	  /*color: #5959 59; серый для не раскрытых меню*/
+  color: #009999;
 }
 .left_menu_a_href:hover {
-   color: #8e23e6;
+   color: #ff0000;
 }
 
 .accordion .link {
 cursor: pointer;
 display: block;
 padding: 15px 15px 15px 42px;
-color: #4D4D4D;
+color: #009999;
+/*color: #4D 4D4D;темно серый*/
 font-size: 14px;
 font-weight: 700;
 border-bottom: 1px solid #CCC;
@@ -32,8 +38,8 @@ position: relative;
 transition: all 0.4s ease;
 }
 .accordion li {
-    margin-left: 0;
-  padding-left: 0;
+/*    margin-left: 0;
+  padding-left: 0;*/
   list-style-type: none;
 }
 
@@ -47,7 +53,7 @@ position: absolute;
 top: 16px;
 left: 12px;
 font-size: 18px;
-color: #595959;
+color: #009999;
 -webkit-transition: all 0.4s ease;
 -o-transition: all 0.4s ease;
 transition: all 0.4s ease;
@@ -60,11 +66,11 @@ font-size: 16px;
 }
 
 .accordion li.open .link {
-color: #8e23e6;
+color: #ff0000;
 }
 
 .accordion li.open i {
-color: #8e23e6;
+color: #ff0000;
 }
 .accordion li.open i.fa-chevron-down {
 -webkit-transform: rotate(180deg);
@@ -98,7 +104,7 @@ transition: all 0.25s ease;
 }
 
 .submenu a:hover {
-background: #8e23e6;
+background: #ff0000;
 color: #FFF;
 }
 /*end left menu*/

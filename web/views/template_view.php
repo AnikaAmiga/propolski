@@ -41,15 +41,31 @@
 	<body>
 
 	<?
-		require_once "all_header.php"; 
+			require_once "all_header.php"; 
+	// require_once "web/models/menu.php"; 
+	// $db = new DB();
+	// $menuCl= new Menu($db);
+	// $menu=$menuCl->getMenu("web");
+
 	    require_once 'all_hor_menu.php';
-	    require_once "web/temp/menu.php";  // TODO : временно !!!
+	    // require_once "web/temp/menu.php";  // TODO : временно !!!
 	?>
 
 		<div id="container">	
 
 			<div id="left-menu">	
-		 		<?  require_once 'all_left_menu.php';	 	
+		 		<?  
+		 		$currentMenuId=0;
+		 		for ($i=0; $i <=count($menu["data"])-1 ; $i++) {
+		 			if ("/".$menu["data"][$i]["url"]==$_SERVER['REQUEST_URI']){
+		 				$currentMenuId=$menu["data"][$i]["id"];
+						// echo $currentMenuId;
+					}
+		 		}		 		
+				$categoriesCl= new Categories($db);
+				 $categories=$categoriesCl->getCategoriesByMenuId($currentMenuId);
+				 // var_dump($categories);
+		 		require_once 'all_left_menu.php';	 	
 		 		?>		
 			</div>
 			<div id="right-menu">	

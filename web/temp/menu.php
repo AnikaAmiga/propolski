@@ -10,15 +10,6 @@
 				"img" => "img/map/home.jpeg"
 				],
 								[
-				"name" => "goods",
-				"url" => "goods",
-				"ru_name" => "Товары",
-				"small_name" => "=)",
-				"logo"  => "edit",
-				"location" => "/users",
-				"img" => "img/map/voc.jpeg"
-				],
-								[
 				"name" => "video",
 				"url" => "index.php?route=video",
 				"ru_name" => "Видеоуроки",

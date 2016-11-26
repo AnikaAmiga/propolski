@@ -7,5 +7,5 @@
 	}else{
 		require_once 'web/bootstrap.php';
 	}
-	// изменения
+	// test git
 ?>

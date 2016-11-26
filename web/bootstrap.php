@@ -11,8 +11,9 @@ require_once 'core/model.php';
 require_once 'core/view.php';
 require_once 'core/controller.php';
 
-
-
+require_once 'lib/classes/Menu.class.php';
+require_once 'lib/classes/User.class.php';
+require_once 'lib/classes/Categories.class.php';
 /*
 Здесь обычно подключаются дополнительные модули, реализующие различный функционал:
 	> аутентификацию

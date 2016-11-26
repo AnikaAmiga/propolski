@@ -3,6 +3,7 @@
 class Model
 {
 	public $db;
+	public $menu;
 	/*
 		Модель обычно включает методы выборки данных, это могут быть:
 			> методы нативных библиотек pgsql или mysql;
@@ -19,5 +20,11 @@ class Model
 	public function get_data()
 	{
 		// todo
+	}
+
+		public function get_menu()
+	{
+		$menuCl= new Menu($db);
+		 return $menuCl->getMenu("web");
 	}
 }
